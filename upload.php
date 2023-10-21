@@ -12,16 +12,16 @@
 </head>
 
 <body>
-    <div class="frm  py-5">
-        <form action="" method="post" enctype="multipart/form-data">
-            فایل خود را برای آپلود انتخاب کنید.
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input style="border: 1px solid black !important;" type="submit" value="ارسال فایل" name="submit">
 
-        </form>
-    </div>
-    <div class="container-table100">
+    <div class="container-uploadtbl">
+        <div class="frm  py-5">
+            <form action="" method="post" enctype="multipart/form-data">
+                فایل خود را برای آپلود انتخاب کنید.
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input style="border: 1px solid black !important;" type="submit" value="ارسال فایل" name="submit">
 
+            </form>
+        </div>
         <div class="wrap-table100">
             <div class="table100">
                 <table>

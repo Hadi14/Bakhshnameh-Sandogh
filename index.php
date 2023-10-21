@@ -9,13 +9,13 @@
     <link type="text/css" href="css/style.css" rel="stylesheet" />
 </head>
 
-<body>
+<body id="indexbody">
+<div class="loginbar">
+            <a href="./loginadmin.php">ورود</a>
+        </div>
     <div class="limiter">
-
+      
         <div class="container-table100">
-            <div class="loginbar">
-                <a href="./loginadmin.php">ورود</a>
-            </div>
             <div class="title">
                 <h1>سامانه بخشنامه های صندوق امداد ولایت</h1>
                 <h3>کمیته امداد امام خمینی(ره) استان چهارمحال و بختیاری</h3>

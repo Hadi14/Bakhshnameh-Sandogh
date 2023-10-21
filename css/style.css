@@ -116,13 +116,12 @@ iframe {
   background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
   background: -o-linear-gradient(45deg, #4158d0, #c850c0);
   background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
-  background: linear-gradient(45deg, #4158d0, #c850c0);
+  background: linear-gradient(45deg, #4158d0, #c850c0); */
 
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
-  display: -ms-flexbox; */
-  background: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+  display: -ms-flexbox;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -130,19 +129,46 @@ iframe {
   padding: 33px 30px;
 }
 
-.frm {
+.container-uploadtbl {
+  width: 100%;
+  min-height: 100vh;
   background: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.frm {
   display: flex;
   justify-content: center;
 }
 
 .frm form {
   display: flex;
+}
 
+#indexbody {
+  background-image: url(../img/emdadv.jpg);
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* background-color: rgb(80, 80, 80); */
+  /* background-blend-mode: multiply; */
+  /* background-size: auto;
+  background-repeat: no-repeat; */
+}
+
+
+.loginbar {
+  position: sticky;
+  top: 0;
 }
 
 .wrap-table100 {
-  width: 1170px;
+  width: 100%;
 }
 
 table {
@@ -351,6 +377,7 @@ tbody tr:hover {
 .title,
 .column3 {
   text-align: center;
+  /* color: #fff; */
 }
 
 @font-face {
