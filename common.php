@@ -1,4 +1,5 @@
 <?
+
 function dump($var, $return = false)
 {
     if (is_array($var)) {
@@ -63,7 +64,7 @@ function connectiondb($options = null)
 function getFirst($u, $p)
 {
     $db = Db::getInstance();
-    $sql = "select * from users where user='$u' and password='$p'";
+    $sql = "select * from users where username='$u' and password='$p'";
     $records = $db->first($sql);
     return $records;
 }

@@ -7,10 +7,10 @@
     {
         if ($options == null) {
             global $config;
-            $s = $config['db']['host'];
-            $u =  $config['db']['user'];
-            $p = $config['db']['pass'];
-            $db =  $config['db']['dbname'];
+            $s = 'localhost';
+            $u =  'root';
+            $p = ')NvD]JBPdI3YjJYs';
+            $db =  'bakhshnamehsandogh';
         } else {
             $s = $options['host'];
             $u = $options['user'];

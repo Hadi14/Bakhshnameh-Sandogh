@@ -14,6 +14,11 @@
 <body>
 
     <div class="container-uploadtbl">
+        <div class="logout">
+            <a href="logout.php"> <i class="bi bi-box-arrow-left"></i> </a>
+            <a href="index.php"> <i class="bi bi-house-fill"></i></a>
+        </div>
+        <div class="logout"></div>
         <div class="frm  py-5">
             <form action="" method="post" enctype="multipart/form-data">
                 فایل خود را برای آپلود انتخاب کنید.
@@ -78,7 +83,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?= getBaseUrl() ?>upload/renamePDF">
+                    <form method="post" action="upload/renamePDF">
                         <div class="mb-0">
                             <label id="otherfiledlabel" for="recipient-name1" class="col-form-label">نام فایل:</label>
                             <input id="otherrecipientName1" name="newName" type="text" class="form-control">
@@ -106,4 +111,4 @@
         // console.log($('#oldname').val());
     }
 </script>
-<script src="<?= getBaseUrl() ?>js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
