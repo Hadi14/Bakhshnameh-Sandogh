@@ -10,10 +10,10 @@
 </head>
 
 <body>
-<form class="box" method="post">
+<form class="box" method="post" action="">
   <i class="far fa-user"></i>
-  <input type="text" placeholder="Email">
-  <input type="password" placeholder="Password">
+  <input type="text" name="uname" placeholder="UserName">
+  <input type="password" name="pass" placeholder="Password">
   <input type="submit" value="ورود">
 </form>  
     <!-- <script src="js/login.js"></script> -->

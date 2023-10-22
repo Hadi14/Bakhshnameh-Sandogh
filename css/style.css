@@ -165,11 +165,15 @@ iframe {
 .loginbar {
   position: sticky;
   top: 0;
+  padding: 20px 20px 0 0;
+  font-size: 25px;
 }
 
 .wrap-table100 {
   width: 100%;
 }
+
+
 
 table {
   border-spacing: 1;

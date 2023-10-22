@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>بخشنامه های صندوق امداد ولایت</title>
     <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap-icons-1.11.1/bootstrap-icons.css">
 </head>
 
 <body id="indexbody">
-<div class="loginbar">
-            <a href="./loginadmin.php">ورود</a>
-        </div>
+    <div class="loginbar">
+        <a href="./loginadmin.php"><i class="bi bi-person-circle"></i></a>
+    </div>
     <div class="limiter">
-      
+
         <div class="container-table100">
             <div class="title">
                 <h1>سامانه بخشنامه های صندوق امداد ولایت</h1>

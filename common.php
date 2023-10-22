@@ -48,18 +48,24 @@ function strHas($str, $srch, $caseSensitive = false)
         return strpos(strtolower($str), strtolower($srch)) !== false;
     }
 }
-function getLastInsert($tbl, $yrFieldName, $monFieldName, $yer, $mnth)
+function connectiondb($options = null)
 {
-    $db = Db::getInstance();
-    $sql = "select * from $tbl where $yrFieldName='$yer' and $monFieldName='$mnth' ";
-    $row = $db->query($sql);
-    return $row;
+    if ($options == null) {
+
+        $s = 'localhost';
+        $u = 'root';
+        $p = ")NvD]JBPdI3YjJYs";
+        $db = 'bakhshnamehsandogh';
+    } else {
+        $s = $options['host'];
+        $u = $options['user'];
+        $p = $options['pass'];
+        $db = $options['dbname'];
+    }
+    // Create connection
+    $connect = new mysqli($s, $u, $p, $db);
+    // Check connection
+    if ($connect->connect_error) {
+        echo "Connection failed: " . $connect->connect_error;
+    }
 }
-// function showmsg($type, $msg, $exit)
-// {
-//     $ar['msg'] = $msg;
-//     Render::render("message/$type.php", $ar);
-//     if ($exit) {
-//         exit;
-//     }
-// }

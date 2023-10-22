@@ -11,6 +11,12 @@ body {
     font-size: 72px;
 }
 
+form.box {
+    border-radius: 5px;
+}
+
+
+
 .box {
     width: 300px;
     padding: 30px;
