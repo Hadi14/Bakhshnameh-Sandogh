@@ -13,6 +13,18 @@ if (isset($_GET['upfile'])) {
     // </script>";
 } elseif (isset($_GET['rename'])) {
     renamePDF();
+} elseif (isset($_GET['delete'])) {
+    $filename = $_GET['delete'];
+    RemovePDF($filename);
+}
+function RemovePDF($file)
+{
+    $fileNm =  rawurldecode($file[0]);
+    echo $fileNm;
+    echo "<br>";
+    $path = __DIR__ . "/../../uploads/$fileNm";
+    echo file_exists($path) . "<br>";
+    @unlink($path);
 }
 function renamePDF()
 {
@@ -155,7 +167,7 @@ function uploadPdf()
                                     <td class='column2'>" . $filenameNoExten . "</td> 
                                     <td class='column3'> <a class='dl' href='./downloadfile.php?file=$file'  >دانلود</a> </td>
                                     <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#renameModal' onclick=LoadnameFile('$rest') href='' ><i class='bi bi-pencil-square'></i></a> </td>
-                                    <td class='column3'> <a class='dl' href='./deletefile.php?file=$file'  ><i class='bi bi-trash3'></i></a> </td>
+                                    <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#deleteModal' href='./deletefile.php?file=$file'  ><i class='bi bi-trash3'></i></a> </td>
                                     </tr>";
                             }
                         }
@@ -184,6 +196,30 @@ function uploadPdf()
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="ویرایش">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خروج</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- End of Modal ----------------------------------------------------------->
+    <!--------------------------- deleteModal modal  ------------------------------------------------------------------------->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" dir="rtl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="otherModalLabel">حذف فایل</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="upload.php?delete=true">
+                        <div class="mb-0">
+                            <label for="recipient-name1" class="col-form-label">آیا مطمئن هستید که میخواهید این فایل را حذف کنید؟</label>
+                            <input id="oldname" name="oldname" type="hidden">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="بله">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
                         </div>
                     </form>
                 </div>
