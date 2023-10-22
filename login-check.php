@@ -15,6 +15,7 @@ if ($record == null) {
         echo $ar;
     }
 } else {
+    session_start();
     $_SESSION['uname'] = $u;
     header("Location:upload.php");
 }

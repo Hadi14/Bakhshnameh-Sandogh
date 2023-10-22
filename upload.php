@@ -1,3 +1,10 @@
+<?
+session_start();
+if (!isset($_SESSION['uname'])) {
+    header("Location:index.php");
+}
+// echo "USENAME :" . $_SESSION['uname'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
