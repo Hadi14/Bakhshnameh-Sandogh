@@ -111,6 +111,7 @@ function uploadPdf()
     <link rel="stylesheet" href="js/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="css/bootstrap-icons-1.11.1/bootstrap-icons.css">
     <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <link type="text/css" href="css/upload.css" rel="stylesheet" />
     <script src="js/jquery-3.7.0.js"></script>
     <title>Document</title>
 </head>
