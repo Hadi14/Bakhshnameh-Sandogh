@@ -14,16 +14,16 @@ if (isset($_GET['upfile'])) {
 } elseif (isset($_GET['rename'])) {
     renamePDF();
 } elseif (isset($_GET['delete'])) {
-    $filename = $_GET['delete'];
+    $filename = $_POST['delfilename'];
     RemovePDF($filename);
 }
 function RemovePDF($file)
 {
-    $fileNm =  rawurldecode($file[0]);
-    echo $fileNm;
-    echo "<br>";
-    $path = __DIR__ . "/../../uploads/$fileNm";
-    echo file_exists($path) . "<br>";
+    $fileNm =  rawurldecode($file);
+    // echo $fileNm;
+    // echo "<br>";
+    $path = "./uploads/$fileNm";
+    // echo file_exists($path) . "<br>";
     @unlink($path);
 }
 function renamePDF()
@@ -167,7 +167,7 @@ function uploadPdf()
                                     <td class='column2'>" . $filenameNoExten . "</td> 
                                     <td class='column3'> <a class='dl' href='./downloadfile.php?file=$file'  >دانلود</a> </td>
                                     <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#renameModal' onclick=LoadnameFile('$rest') href='' ><i class='bi bi-pencil-square'></i></a> </td>
-                                    <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#deleteModal' href='./deletefile.php?file=$file'  ><i class='bi bi-trash3'></i></a> </td>
+                                    <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#deleteModal' onclick=LoadnameFiledel('$file') href=''  ><i class='bi bi-trash3'></i></a> </td>
                                     </tr>";
                             }
                         }
@@ -214,8 +214,8 @@ function uploadPdf()
                 <div class="modal-body">
                     <form method="post" action="upload.php?delete=true">
                         <div class="mb-0">
-                            <label for="recipient-name1" class="col-form-label">آیا مطمئن هستید که میخواهید این فایل را حذف کنید؟</label>
-                            <input id="oldname" name="oldname" type="hidden">
+                            <label class="col-form-label">آیا مطمئن هستید که میخواهید این فایل را حذف کنید؟</label>
+                            <input id="delfilename" name="delfilename" type="text">
                         </div>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="بله">
@@ -259,6 +259,10 @@ function uploadPdf()
         $('#otherrecipientName1').val(res.substr(0, res.length - 4));
         $('#oldname').val(res);
         // console.log($('#oldname').val());
+    }
+
+    function LoadnameFiledel(file) {
+        $('#delfilename').val(file);
     }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
