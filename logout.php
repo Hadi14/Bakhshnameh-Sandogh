@@ -1,4 +1,5 @@
 <?
 session_start();
-session_destroy();
+// session_destroy();
+unset($_SESSION["uname"]);
 header("location:index.php");
