@@ -1,3 +1,7 @@
 .logout {
     font-size: 25px;
 }
+
+.logout a {
+    text-decoration: none;
+}

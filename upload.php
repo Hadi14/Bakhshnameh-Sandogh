@@ -120,8 +120,8 @@ function uploadPdf()
 
     <div class="container-uploadtbl">
         <div class="logout">
-            <a href="logout.php"> <i class="bi bi-box-arrow-left"></i> </a>
-            <a href="index.php"> <i class="bi bi-house-fill"></i></a>
+            <a href="logout.php"><i class="bi bi-box-arrow-left mx-3"></i></a>
+            <a href="index.php"><i class="bi bi-house-fill mx-3"></i></a>
         </div>
         <div class="logout"></div>
         <div class="frm  py-5">
