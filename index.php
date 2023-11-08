@@ -28,7 +28,8 @@
                             <tr class="table100-head">
                                 <th class="column1">ردیف</th>
                                 <th class="column2">نام بخشنامه</th>
-                                <th class="column3">دانلود</th>
+                                <th class="column3">دانلود بخشنامه</th>
+                                <th class="column3">نمایش بخشنامه</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,7 @@
                                     <td class='column1'>" . $count++ . "</td> 
                                     <td class='column2'>" . $filenameNoExten . "</td> 
                                     <td class='column3'> <a class='dl' href='./downloadfile.php?file=$file'  >دانلود</a> </td>
+                                    <td class='column4'> <a class='dl' href='./readpdf.php?file=$file'  >نمایش</a></td>
                                     </tr>";
                                 }
                             }
