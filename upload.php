@@ -5,27 +5,33 @@ if (!isset($_SESSION['uname'])) {
 }
 if (isset($_GET['upfile'])) {
     uploadPdf();
-    //     echo "<script type='text/javascript'>
-    // $(document).ready(function(){
-    // $('#Modal').modal('show');
-    // $('#notemodal').text('ok?');
-    // });
-    // </script>";
 } elseif (isset($_GET['rename'])) {
     renamePDF();
 } elseif (isset($_GET['delete'])) {
     $filename = $_POST['delfilename'];
     RemovePDF($filename);
 }
+/**************** Remove PDF Function *************************** */
 function RemovePDF($file)
 {
-    $fileNm =  rawurldecode($file);
-    // echo $fileNm;
-    // echo "<br>";
+
+    // echo $file;
+    // exit;
+
+    // $fileNm = html_entity_decode($file);
+    // echo preg_replace("/[\xA0\xC2]/", "M", $file);
+    $fileNm = preg_replace("/[\xA0\xC2]/", " ", $file);
+    echo "<hr>" . $fileNm . "<hr>";
+
     $path = "./uploads/$fileNm";
-    // echo file_exists($path) . "<br>";
+    $path=rawurldecode($path);
+    // echo $path;
     @unlink($path);
+    // for ($n = 0; $n < strlen($path); $n++) {
+    //     echo "<br>" . $n + 1 . "-" . $path[$n] . " -> " . ord($path[$n]);
+    // }
 }
+/**************** Rename PDF Function *************************** */
 function renamePDF()
 {
     $n = $_POST['oldname'];
@@ -35,7 +41,7 @@ function renamePDF()
     $new = $path . $_POST['newName'] . ".pdf";
     rename($old, $new);
 }
-
+/**************** Upload PDF Function *************************** */
 function uploadPdf()
 {
     $target_dir = "uploads/";
@@ -84,23 +90,8 @@ function uploadPdf()
             echo "Sorry, there was an error uploading your file.";
         }
     }
-
-    /****************************************** */
-    // echo "<br>";
-    // $dirpath  = __DIR__ . "/../../uploads";
-    // $files = scandir($dirpath);
-
-    // foreach ($files as $file) {
-
-    //     $filePath = __DIR__ . "\/..\/..\/uploads" . '/' . $file;
-    //     if (is_file($filePath)) {
-    //         $rest = str_replace(' ', '&nbsp;', $file);
-    //         $path = __DIR__ . "/../../uploads/" . $file;
-    //         echo "<a class='dl'  href='" . getBaseUrl() . "downloadfile/downloadPDF/$file' >" . $file . "</a>" . "&nbsp;&nbsp;&nbsp;" . "<a class='del'  href='" . getBaseUrl() . "upload/RemovePDF/$file' >Delete</a>" . "&nbsp;&nbsp;&nbsp;" . "<a data-bs-toggle='modal' data-bs-target='#renameModal' class='del'  onclick=LoadnameFile('$rest') href='' >Rename</a>";
-    //         echo "<br>";
-    //     }
-    // }
 }
+/****************************************************************************** */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,7 +159,7 @@ function uploadPdf()
                                     <td class='column2'>" . $filenameNoExten . "</td> 
                                     <td class='column3'> <a class='dl' href='./downloadfile.php?file=$file'  >دانلود</a> </td>
                                     <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#renameModal' onclick=LoadnameFile('$rest') href='' ><i class='bi bi-pencil-square'></i></a> </td>
-                                    <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#deleteModal' onclick=LoadnameFiledel('$file') href=''  ><i class='bi bi-trash3'></i></a> </td>
+                                    <td class='column3'> <a class='dl' data-bs-toggle='modal' data-bs-target='#deleteModal' onclick=LoadnameFiledel('$rest') href=''  ><i class='bi bi-trash3'></i></a> </td>
                                     </tr>";
                             }
                         }
@@ -263,6 +254,7 @@ function uploadPdf()
     }
 
     function LoadnameFiledel(file) {
+        console.log(file);
         $('#delfilename').val(file);
     }
 </script>
