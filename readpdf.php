@@ -1,3 +1,4 @@
+<button>بازگشت</button>
 <?
 $fileNm =  rawurldecode($_GET['file']);
 $fileName = basename($fileNm);
