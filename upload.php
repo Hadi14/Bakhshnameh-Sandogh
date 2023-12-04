@@ -14,22 +14,8 @@ if (isset($_GET['upfile'])) {
 /**************** Remove PDF Function *************************** */
 function RemovePDF($file)
 {
-
-    // echo $file;
-    // exit;
-
-    // $fileNm = html_entity_decode($file);
-    // echo preg_replace("/[\xA0\xC2]/", "M", $file);
-    $fileNm = preg_replace("/[\xA0\xC2]/", " ", $file);
-    echo "<hr>" . $fileNm . "<hr>";
-
-    $path = "./uploads/$fileNm";
-    $path=rawurldecode($path);
-    // echo $path;
-    @unlink($path);
-    // for ($n = 0; $n < strlen($path); $n++) {
-    //     echo "<br>" . $n + 1 . "-" . $path[$n] . " -> " . ord($path[$n]);
-    // }
+    $fileNm = preg_replace("/\xC2\xA0/", " ", $file);
+    @unlink("./uploads/" . $fileNm);
 }
 /**************** Rename PDF Function *************************** */
 function renamePDF()
