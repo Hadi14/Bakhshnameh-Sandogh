@@ -27,32 +27,19 @@ function renamePDF()
     $old = $_POST['oldname'];
     $new =  $_POST['newName'] . ".pdf";
 
-    echo preg_match("/\xC2\xA0/", $path . $old);
-    echo preg_match("/\s/", $path . $old);
-    // $n = preg_replace("/\xC2\xA0/", " ", $n);
-    // for ($i = 0; $i < strlen($n); $i++) {
-    //     echo "<b>$n[$i]</b>" . ":" . ord($n[$i]) . " , ";
+    if (preg_match("/ /", $old)) {
+        $old = preg_replace("/\xC2\xA0/", ' ', $old);
+    } elseif (preg_match("/ /", $old)) {
+        $old = preg_replace("/\xC2\xA0/", " ", $old);
+    }
+    // $filename = "./uploads/" . $old;
+    // if (file_exists($filename)) {
+    //     echo "ok The file $filename exists";
+    // } else {
+    //     echo "The file $filename does not exist";
     // }
 
-    // echo "<hr>";
-    // for ($i = 0; $i < strlen($new); $i++) {
-    //     echo "<b>$new[$i]</b>" . ":" . ord($new[$i]) . " , ";
-    // }
-
-
-
-
-
-
-    // $oldname = preg_replace('/\s+/u', ' ', $n);
-    // $oldname = preg_replace('/\s+/', ' ', $n);
-    // $oldname = preg_replace("/\xC2\xA0/", '\x20', $n);
-    // $old =   $oldname;
-
-    // $old = $n;
-    // $new =  $_POST['newName'];
-    // $new = preg_replace("/\s/", "/\xC2\xA0/", $new);
-   
+//   "Doc 29 844.pdf";
     rename($path . $old, $path . $new);
 }
 /**************** Upload PDF Function *************************** */
