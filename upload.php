@@ -14,6 +14,9 @@ if (isset($_GET['upfile'])) {
 /**************** Remove PDF Function *************************** */
 function RemovePDF($file)
 {
+    // for ($i = 0; $i < strlen($file); $i++) {
+    //     echo   "<br>" . $file[$i] . "->" . ord($file[$i]);
+    // }
     $fileNm = preg_replace("/\xC2\xA0/", " ", $file);
     @unlink("./uploads/" . $fileNm);
 }
@@ -21,8 +24,11 @@ function RemovePDF($file)
 function renamePDF()
 {
     $n = $_POST['oldname'];
+
+    // echo "****  " . $n;
     $path = "./uploads/";
-    $oldname = preg_replace('/\s+/u', ' ', $n);
+    // $oldname = preg_replace('/\s+/u', ' ', $n);
+    $oldname = preg_replace('/\s+/', ' ', $n);
     $old = $path .   $oldname;
     $new = $path . $_POST['newName'] . ".pdf";
     rename($old, $new);
