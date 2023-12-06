@@ -23,7 +23,6 @@ function renamePDF()
     $path = "./uploads/";
     $old = $_POST['oldname'];
     $new =  $_POST['newName'] . ".pdf";
-
     rename($path . $old, $path . $new);
 }
 /**************** Upload PDF Function *************************** */
@@ -32,47 +31,49 @@ function uploadPdf()
     $target_dir = "uploads/";
     $pureName = basename($_FILES["fileToUpload"]["name"]);
     $sepName = explode('.', $pureName);
-
     $fileName = $sepName[0] . '.pdf';
+    $exten = strtolower($sepName[1]);
     $target_file = $target_dir . $fileName;
-
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // Check if file already exists
     if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
+        // echo "Sorry, file already exists.";
+        $uploadOk = 0;
+        echo "<script>alert('این فایل وجود دارد لطفا فایل دیگری آپلود نمائید.!!!')</script>";
+    } else if (!($_FILES["fileToUpload"]["name"])) {
+        // echo "Sorry, No file selected. Please Select a file.";
+        echo "<script>alert('هیچ فایلی برای آپلود انتخاب نشده است. لطفا فایلی را انتخاب کنید.!!!')</script>";
         $uploadOk = 0;
     }
-
-    if (!($_FILES["fileToUpload"]["name"])) {
-        echo "Sorry, No file selected. Please Select a file.";
-        $uploadOk = 0;
-    }
-
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 20000000) {
-        echo  $_FILES['fileToUpload']['size'] .  "******Sorry, your file is too large.";
+    else if ($_FILES["fileToUpload"]["size"] > 15000000) {
+        // echo  $_FILES['fileToUpload']['size'] .  "******Sorry, your file is too large.";
+        echo "<script>alert('حجم فایل انتخاب شده بیشتر از مقدار مجاز است. لطفا فایلی با حجم کمتر از 15 مگا بایت انتخاب کنید.!!!')</script>";
         $uploadOk = 0;
     }
 
     // Allow certain file formats
-    if (
-        $imageFileType != "pdf"
-    ) {
-        echo "Sorry, only PDF files are allowed.";
+    else if ($exten != "pdf") {
+        // echo "Sorry, only PDF files are allowed.";
+        echo "<script>alert('فرمت فایل انتخاب شده مجاز نمی باشد. لطفا فایل با فرمت pdf انتخاب کنید.!!!')</script>";
         $uploadOk = 0;
     }
 
     // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
+    // if ($uploadOk == 0) {
+    //     echo "Sorry, your file was not uploaded.";
+    //     // if everything is ok, try to upload file
+    // }
+
+    else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+            // echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+            echo "<script>alert('فایل مورد نظر با موفقیت آپلود شد.')</script>";
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            // echo "Sorry, there was an error uploading your file.";
+            echo "<script>alert('خطایی هنگام آپلود فایل رخ داد لطفا مجددا سعی نمائید.!!!')</script>";
         }
     }
 }
