@@ -14,9 +14,6 @@ if (isset($_GET['upfile'])) {
 /**************** Remove PDF Function *************************** */
 function RemovePDF($file)
 {
-    // for ($i = 0; $i < strlen($file); $i++) {
-    //     echo   "<br>" . $file[$i] . "->" . ord($file[$i]);
-    // }
     $fileNm = preg_replace("/\xC2\xA0/", " ", $file);
     @unlink("./uploads/" . $fileNm);
 }
@@ -27,21 +24,6 @@ function renamePDF()
     $old = $_POST['oldname'];
     $new =  $_POST['newName'] . ".pdf";
 
-    // if (preg_match("/ /", $old)) {
-    //     $old = preg_replace("/\xC2\xA0/", ' ', $old);
-    // } elseif (preg_match("/ /", $old)) {
-    //     $old = preg_replace("/\xC2\xA0/", " ", $old);
-    // }
-
-    // $filename = "./uploads/" . $old;
-    // if (file_exists($filename)) {
-    //     echo "ok The file $filename exists";
-    // } else {
-    //     echo "The file $filename does not exist";
-    // }
-    // for ($i = 0; $i < strlen($old); $i++) {
-    //     echo " - " . "<b>$old[$i]:</b>" . ord($old[$i]);
-    // }
     rename($path . $old, $path . $new);
 }
 /**************** Upload PDF Function *************************** */
@@ -141,22 +123,15 @@ function uploadPdf()
                     <tbody>
                         <?
                         require_once("common.php");
-                        // echo "<br>";
                         $dirpath  = "./uploads";
                         $files = scandir($dirpath);
-                        // dump($files);
                         $count = 1;
                         foreach ($files as $file) {
-                            // $rest = substr($file, 0, -4);
-                            // echo $rest;
-                            // $rest = explode('.', $file);
-                            // dump($rest);
                             $filePath = "./uploads" . '/' . $file;
                             if (is_file($filePath)) {
                                 $rest = str_replace(' ', '&nbsp;', $file);
                                 $path = "./uploads/" . $file;
                                 $filenameNoExten = substr($file, 0, strlen($file) - 4);
-                                // echo "<a class='dl'  href='" . getBaseUrl() . "downloadfile/downloadPDF/$file' >" . $file . "</a>" . "&nbsp;&nbsp;&nbsp;" . "<a class='del'  href='" . getBaseUrl() . "upload/RemovePDF/$file' >Delete</a>" . "&nbsp;&nbsp;&nbsp;" . "<a data-bs-toggle='modal' data-bs-target='#renameModal' class='del'  onclick=LoadnameFile('$rest') href='' >Rename</a>";
                                 echo "<tr> 
                                     <td class='column1'>" . $count++ . "</td> 
                                     <td class='column2'>" . $filenameNoExten . "</td> 
@@ -251,29 +226,12 @@ function uploadPdf()
 
 <script>
     function LoadnameFile(res) {
-
-        // res.forEach(element => {
-        //    console.log(charCodeAt(element));
-        // });
-
-        // for (let i = 0; i < res.length; i++) {
-        //     console.log(res[i] + ":" + res[i].charCodeAt(0));
-        // }
-
-        // console.log("*******************");
         res = res.replace(/\u00A0+/g, "\u0020");
-        // console.log(res);
-
-        // for (let i = 0; i < res.length; i++) {
-        //     console.log(res[i] + ":" + res[i].charCodeAt(0));
-        // }
-
         $('#otherrecipientName1').val(res.substr(0, res.length - 4));
         $('#oldname').val(res);
     }
 
     function LoadnameFiledel(file) {
-        // console.log(file);
         $('#delfilename').val(file);
     }
 </script>
