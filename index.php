@@ -47,7 +47,7 @@
                                 // dump($rest);
                                 $filePath = "./uploads" . '/' . $file;
                                 if (is_file($filePath)) {
-                                    $rest = str_replace(' ', '&nbsp;', $file);
+                                    // $rest = str_replace(' ', '&nbsp;', $file);
                                     $path = "./uploads/" . $file;
                                     $filenameNoExten = substr($file, 0, strlen($file) - 4);
                                     // echo "<a class='dl'  href='" . getBaseUrl() . "downloadfile/downloadPDF/$file' >" . $file . "</a>" . "&nbsp;&nbsp;&nbsp;" . "<a class='del'  href='" . getBaseUrl() . "upload/RemovePDF/$file' >Delete</a>" . "&nbsp;&nbsp;&nbsp;" . "<a data-bs-toggle='modal' data-bs-target='#renameModal' class='del'  onclick=LoadnameFile('$rest') href='' >Rename</a>";
@@ -58,6 +58,10 @@
                                     <td class='column4'> <a class='dl' href='./readpdf.php?file=$file'  >نمایش</a></td>
                                     </tr>";
                                 }
+                                for ($i = 0; $i < strlen($file); $i++) {
+                                    echo " - " ."<b>$file[$i]:</b>". ord($file[$i]);
+                                }
+                                echo "<hr>";
                             }
                             ?>
 
