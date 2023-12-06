@@ -402,6 +402,11 @@ tbody tr:hover {
 .disnone {
   display: none;
 }
+
 .disshow {
   display: block;
+}
+
+.table100 table {
+  margin-top: 20px;
 }
