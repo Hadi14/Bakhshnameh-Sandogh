@@ -33,8 +33,6 @@ function renamePDF()
     //     $old = preg_replace("/\xC2\xA0/", " ", $old);
     // }
 
-
-
     // $filename = "./uploads/" . $old;
     // if (file_exists($filename)) {
     //     echo "ok The file $filename exists";
@@ -253,7 +251,7 @@ function uploadPdf()
 
 <script>
     function LoadnameFile(res) {
-        $('#otherrecipientName1').val(res.substr(0, res.length - 4));
+
         // res.forEach(element => {
         //    console.log(charCodeAt(element));
         // });
@@ -263,7 +261,17 @@ function uploadPdf()
         }
 
 
+        console.log("*******************");
+        res = res.replace(/\u00A0+/g, "\u0020");
         console.log(res);
+
+        for (let i = 0; i < res.length; i++) {
+            console.log(res[i] + ":" + res[i].charCodeAt(0));
+        }
+
+
+
+        $('#otherrecipientName1').val(res.substr(0, res.length - 4));
         $('#oldname').val(res);
     }
 
