@@ -58,10 +58,10 @@
                                     <td class='column4'> <a class='dl' href='./readpdf.php?file=$file'  >نمایش</a></td>
                                     </tr>";
                                 }
-                                for ($i = 0; $i < strlen($file); $i++) {
-                                    echo " - " ."<b>$file[$i]:</b>". ord($file[$i]);
-                                }
-                                echo "<hr>";
+                                // for ($i = 0; $i < strlen($file); $i++) {
+                                //     echo " - " ."<b>$file[$i]:</b>". ord($file[$i]);
+                                // }
+                                // echo "<hr>";
                             }
                             ?>
 

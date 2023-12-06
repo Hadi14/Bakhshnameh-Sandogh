@@ -39,9 +39,9 @@ function renamePDF()
     // } else {
     //     echo "The file $filename does not exist";
     // }
-    for ($i = 0; $i < strlen($old); $i++) {
-        echo " - " . "<b>$old[$i]:</b>" . ord($old[$i]);
-    }
+    // for ($i = 0; $i < strlen($old); $i++) {
+    //     echo " - " . "<b>$old[$i]:</b>" . ord($old[$i]);
+    // }
     rename($path . $old, $path . $new);
 }
 /**************** Upload PDF Function *************************** */
@@ -256,27 +256,24 @@ function uploadPdf()
         //    console.log(charCodeAt(element));
         // });
 
-        for (let i = 0; i < res.length; i++) {
-            console.log(res[i] + ":" + res[i].charCodeAt(0));
-        }
+        // for (let i = 0; i < res.length; i++) {
+        //     console.log(res[i] + ":" + res[i].charCodeAt(0));
+        // }
 
-
-        console.log("*******************");
+        // console.log("*******************");
         res = res.replace(/\u00A0+/g, "\u0020");
-        console.log(res);
+        // console.log(res);
 
-        for (let i = 0; i < res.length; i++) {
-            console.log(res[i] + ":" + res[i].charCodeAt(0));
-        }
-
-
+        // for (let i = 0; i < res.length; i++) {
+        //     console.log(res[i] + ":" + res[i].charCodeAt(0));
+        // }
 
         $('#otherrecipientName1').val(res.substr(0, res.length - 4));
         $('#oldname').val(res);
     }
 
     function LoadnameFiledel(file) {
-        console.log(file);
+        // console.log(file);
         $('#delfilename').val(file);
     }
 </script>
