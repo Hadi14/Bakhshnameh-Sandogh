@@ -8,6 +8,7 @@
     <title>بخشنامه های صندوق امداد ولایت</title>
     <link type="text/css" href="css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/bootstrap-icons-1.11.1/bootstrap-icons.css">
+    <script src="js/jquery-3.7.0.js"></script>
 </head>
 
 <body id="indexbody">
@@ -55,7 +56,7 @@
                                     <td class='column1'>" . $count++ . "</td> 
                                     <td class='column2'>" . $filenameNoExten . "</td> 
                                     <td class='column3'> <a class='dl' href='./downloadfile.php?file=$file'  >دانلود</a> </td>
-                                    <td class='column4'> <a class='dl' href='./readpdf.php?file=$file'  >نمایش</a></td>
+                                    <td class='column4'> <a class='dl' href='./index.php?file=$file' onclick='showiframe()' >نمایش</a></td>
                                     </tr>";
                                 }
                                 // for ($i = 0; $i < strlen($file); $i++) {
@@ -71,6 +72,15 @@
             </div>
         </div>
     </div>
+
+    <iframe id="ifram" src="./showpdf.php?file=<?= $_GET['file'] ?>" frameborder="1" width="100%" height="100%"></iframe>
 </body>
 
 </html>
+
+<script>
+    function showiframe() {
+        $("#ifram").removeClass("disnone");
+        // $("#ifram").addClass("disshow");
+    }
+</script>
